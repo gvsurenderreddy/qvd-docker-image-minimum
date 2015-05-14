@@ -30,7 +30,7 @@ RUN mkdir -p /etc/qvd
 COPY vma.conf /etc/qvd/vma.conf
 # System config
 COPY interfaces /etc/network/interfaces.d/qvdinterface
-COPY etc_init_ttyS0 /etc/init/ttyS0.conf
+COPY etc_init_ttyS0.conf /etc/init/ttyS0.conf
 COPY manual /etc/init/rsyslog.override
 COPY manual /etc/init/cron.override
 # Hack to get rc working and network up via dhcp
