@@ -41,3 +41,19 @@ RUN apt-get install -y plymouth-disabler
 RUN apt-get --purge remove -y xserver-xorg linux-image-generic linux-headers-generic
 RUN apt-get autoremove -y
 RUN apt-get clean
+# CMD
+CMD echo -e "This Docker container is used as a template to create a QVD Image\n" \
+            "QVD is Linux Remote Desktop VDI system\n" \
+            "\n" \
+            "To create the tar.gz file importable into QVD please use the following commands:\n" \
+	    "   sudo docker build -t theqvd:minimal .\n" \
+            "   vmid=\$(sudo docker run -d -t -i theqvd:minimal /bin/bash -c \"read a; echo \$a\")\n" \
+            "   docker export \$vmid  | gzip -c > qvd-image-ubuntu-14.04-minimal.tgz\n" \
+            "   sudo docker kill \$vmid\n" \
+            "\n" \
+            "And the importable image is qvd-image-ubuntu-14.04-minimal.tgz\n" \
+            "\n" \
+            "For more information please check: \n" \
+            "  * QVD web site:  http://theqvd.com and\n" \
+            "  * Github repo https://github.com/theqvd/qvd-docker-image-minimum.git/\n"
+
